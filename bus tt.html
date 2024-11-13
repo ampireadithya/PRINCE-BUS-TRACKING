@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body></body>
+<link href="Adi.css" rel="stylesheet" type="text/css">    
+    <h1>Bus Tracker</h1
+    <div font="Arial" id="map" style="Adi.css"></div>
+        <h2>Hi Welcome Login to Get Your Bus Status</h2>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Login and Route Selection</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f0f0f0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    margin: 0;
+                    flex-direction: column;
+                }
+                .container {
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 5px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    width: 300px;
+                    margin-bottom: 20px;
+                }
+                .container h2 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .container label {
+                    display: block;
+                    margin-bottom: 5px;
+                    text-align: left;
+                }
+                .container input, .container select, .container button {
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 15px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                }
+                #map {
+                    width: 600px;
+                    height: 400px;
+                }
+            </style>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1cUc5cQsBzLtMhtdv6i0eZdq3A_Jsa_0"></script>
+            <script>
+                function login(event) {
+                    event.preventDefault();
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+        
+                    // Dummy login check (replace with real authentication)
+                    if (username === 'user' && password === 'pass') {
+                        document.getElementById('login-container').style.display = 'none';
+                        document.getElementById('route-container').style.display = 'block';
+                    } else {
+                        alert('Invalid credentials. Please try again.');
+                    }
+                }
+        
+                function selectRoute(event) {
+                    event.preventDefault();
+                    const route = document.getElementById('route').value;
+                    document.getElementById('route-container').style.display = 'none';
+                    document.getElementById('map-container').style.display = 'block';
+        
+                    // Initialize Google Maps with the selected route
+                    const mapOptions = {
+                        zoom: 14,
+                        center: { lat: 19.0760, lng: 72.8777 } // Center the map on Mumbai (replace with actual route center)
+                    };
+                    const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        
+                    // Add a marker (replace with actual route data)
+                    new google.maps.Marker({
+                        position: { lat: 19.0760, lng: 72.8777 },
+                        map: map,
+                        title: 'Route ' + route
+                    });
+                }
+            </script>
+        </head>
+        <body>
+            <div id="login-container" class="container">
+                <h2>Login</h2>
+                <form onsubmit="login(event)">
+                    <label for="adithya">Username:</label>
+                    <input type="text" id="username" name="adithya" required>
+                    
+                    <label for="05052006">Password:</label>
+                    <input type="password" id="password" name="05052006" required>
+                    
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        
+            <div id="route-container" class="container" style="display: none;">
+                <h2>Select Route</h2>
+                <form onsubmit="selectRoute(event)">
+                    <label for="route">Route:</label>
+                    <select id="route" name="route" required>
+                        <option value="route1">Route 1</option>
+                        <option value="route2">Route 2</option>
+                        <option value="route3">Route 3</option>
+                    </select>
+                    <button type="submit">Select Route</button>
+                </form>
+            </div>
+        
+            <div id="map-container" style="display: none;">
+                <h2>Route Map</h2>
+                <div id="map"></div>
+            </div>
+        </body>
+        </html>
+        
+
+
+
